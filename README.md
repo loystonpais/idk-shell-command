@@ -9,14 +9,34 @@ IDK is a command-line tool that provides concise, professional Linux commands ba
 - **Clipboard Integration**: Copies the command output directly to the clipboard for easy pasting.
 - **Customizable**: You are the limit.
 
-## Installation
+## Installation 
 
-Ensure you have Nix installed. Then clone the repository and use the default Nix configuration:
+### For Nix Users
 
 ```bash
 git clone <repository-url>
 cd <repository-directory>
 nix-build
+# Binary will be available at ./result/bin/idk
+```
+
+### For Nix Users (2)
+
+```nix
+let
+  idkPackage = import (builtins.fetchGit {
+    url = "<repository-url>";
+    ref = "main";
+    rev = "<commit-sha>";
+  });
+in
+
+{
+  environment.systemPackages = with pkgs; [
+    idkPackage
+  ];
+}
+
 ```
 
 Set the environment variable for the API key:
@@ -25,12 +45,13 @@ Set the environment variable for the API key:
 export IDK_GROQ_API_KEY=<your-api-key>
 ```
 
+
 ## Usage
 
 Run the tool with a query for the Linux command:
 
 ```bash
-./result/bin/idk how to list all files in a directory
+idk how to list all files in a directory
 ```
 
 The result will display the command and copy it to your clipboard for convenience.

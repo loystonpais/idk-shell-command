@@ -8,7 +8,7 @@ import requests
 import json
 
 TASK = """
-Please interpret the user's query to provide an appropriate Linux command concisely and accurately, without additional formatting or extraneous information. If the user requests a template or code snippet, avoid enclosing it within code blocks or extra formatting elements. Focus on clarity and directness, ensuring responses are professional and to the point.
+Your task is to understand the query and provide an appropriate Linux command—nothing else. Occasionally, the user may request a template or code snippet; in such cases, avoid using code blocks.
 """
 
 API_KEY = os.environ.get("IDK_GROQ_API_KEY")

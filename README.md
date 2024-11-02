@@ -56,6 +56,8 @@ idk how to list all files in a directory
 
 The result will display the command and copy it to your clipboard for convenience.
 
+![Demo of the Tool](assets/demo.png)
+
 ## Dependencies
 
 This project uses:

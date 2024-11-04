@@ -33,7 +33,7 @@ in
 
 {
   environment.systemPackages = with pkgs; [
-    idkPackage
+    ( callPackage idkPackage { inherit pkgs; } )
   ];
 }
 

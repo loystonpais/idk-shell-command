@@ -6,7 +6,7 @@ long_description = readme.read_text() if readme.exists() else ""
 
 setup(
     name="idk-command",
-    version="0.0.1",
+    version="0.0.2",
     description="A command-line tool for generating Linux commands based on user queries.",
     long_description=long_description,
     long_description_content_type="text/markdown",

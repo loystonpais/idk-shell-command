@@ -31,8 +31,28 @@ cur.execute("""
     )
 """)
 
+if len(sys.argv) > 1 and sys.argv[-1] == "-":
+    sys.argv.pop()
+    take_input = True
+else:
+    take_input = False
 
-query = " ".join(sys.argv[1:])
+
+if take_input:
+    inp = sys.stdin.read()
+else:
+    inp = None
+
+
+args = " ".join(sys.argv[1:])
+
+
+if inp and args:
+    query = "\n\n".join((inp, args))
+else:
+    query = args
+
+
 res = cur.execute("SELECT response FROM queryresponse WHERE query = ?", (query,)).fetchone()
 
 if not res:

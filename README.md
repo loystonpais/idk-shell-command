@@ -16,26 +16,24 @@ IDK is a command-line tool that provides concise, professional Linux commands ba
 ```bash
 git clone <repository-url>
 cd <repository-directory>
-nix-build
+nix build
 # Binary will be available at ./result/bin/idk
 ```
 
 ### For Nix Users (2)
 
 ```nix
-let
-  idkPackage = import (builtins.fetchGit {
-    url = "<repository-url>";
-    ref = "main";
-    rev = "<commit-sha>";
-  });
-in
+# flake.nix
+idk-shell-command = {
+  url = "github:loystonpais/idk-shell-command";
+  inputs.nixpkgs.follows = "nixpkgs";
+};
 
-{
-  environment.systemPackages = with pkgs; [
-    ( callPackage idkPackage { inherit pkgs; } )
-  ];
-}
+
+# configuration
+environment.systemPackages = [
+  inputs.idk-shell-command.packages.${system}.default
+];
 
 ```
 

@@ -68,7 +68,7 @@ if not res:
             }
         ],
         "temperature": 0.01,
-        "model": "llama-3.1-70b-versatile"
+        "model": "llama-3.3-70b-versatile"
     }
 
     headers = {
